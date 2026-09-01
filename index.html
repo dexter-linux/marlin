@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marlin Tutors | Casual & Comprehensive Technical Learning</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://meet.jit.si/external_api.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -136,7 +137,7 @@
             </button>
         </div>
 
-        <iframe id="jitsi-iframe" class="w-full h-full border-none" allow="camera; microphone; display-capture; fullscreen"></iframe>
+        <div id="jitsi-meet-container" class="w-full h-full bg-black"></div>
     </div>
 
     <div id="login-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -178,6 +179,7 @@
 
     <script>
         let currentUser = null;
+        let jitsiAPI = null;
 
         function checkSession() {
             const savedUser = sessionStorage.getItem('marlin_user');
@@ -257,10 +259,15 @@
 
             const isTeacher = (currentUser === 'user1');
             const container = document.getElementById('video-frame-container');
-            const iframe = document.getElementById('jitsi-iframe');
+            const meetDiv = document.getElementById('jitsi-meet-container');
             const roleBadge = document.getElementById('role-badge');
 
-            let lobbyConfig = '#config.lobby.enabled=true';
+            meetDiv.innerHTML = '';
+            if (jitsiAPI) {
+                jitsiAPI.dispose();
+                jitsiAPI = null;
+            }
+
             let displayName = isTeacher ? 'Teacher (Marlin Tutors)' : 'Student';
 
             if (isTeacher) {
@@ -271,10 +278,38 @@
                 roleBadge.className = "bg-amber-500 text-white px-2 py-0.5 rounded text-[10px] uppercase font-bold";
             }
 
-            const iframeUrl = `https://meet.jit.si/${cleanRoomName}#config.prejoinPageEnabled=false&interfaceConfig.SHOW_JITSI_WATERMARK=false&userInfo.displayName=${encodeURIComponent(displayName)}${lobbyConfig}`;
-
-            iframe.src = iframeUrl;
             container.classList.remove('hidden');
+
+            const domain = 'meet.jit.si';
+            const options = {
+                roomName: cleanRoomName,
+                width: '100%',
+                height: '100%',
+                parentNode: meetDiv,
+                configOverwrite: {
+                    prejoinPageEnabled: false,
+                    startWithAudioMuted: !isTeacher,
+                    startWithVideoMuted: false,
+                    lobby: {
+                        enabled: true
+                    }
+                },
+                interfaceConfigOverwrite: {
+                    SHOW_JITSI_WATERMARK: false,
+                    SHOW_WATERMARK_FOR_GUESTS: false
+                },
+                userInfo: {
+                    displayName: displayName
+                }
+            };
+
+            jitsiAPI = new JitsiMeetExternalAPI(domain, options);
+
+            jitsiAPI.addEventListener('videoConferenceJoined', () => {
+                if (isTeacher) {
+                    jitsiAPI.executeCommand('toggleLobby', true);
+                }
+            });
 
             if (container.requestFullscreen) {
                 container.requestFullscreen();
@@ -287,9 +322,13 @@
 
         function exitClassroom() {
             const container = document.getElementById('video-frame-container');
-            const iframe = document.getElementById('jitsi-iframe');
+            const meetDiv = document.getElementById('jitsi-meet-container');
 
-            iframe.src = '';
+            if (jitsiAPI) {
+                jitsiAPI.dispose();
+                jitsiAPI = null;
+            }
+            meetDiv.innerHTML = '';
             container.classList.add('hidden');
 
             if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {

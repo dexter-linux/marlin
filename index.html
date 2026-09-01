@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marlin Tutors | Casual & Comprehensive Technical Learning</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0b2545">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#0b2545">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script src="https://meet.jit.si/external_api.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -30,8 +39,9 @@
             <nav class="flex items-center space-x-6 text-sm font-semibold">
                 <a href="#about" class="hover:text-teal_brand transition">About</a>
                 <a href="#pillars" class="hover:text-teal_brand transition">What We Teach</a>
+                <a href="#resources" class="hover:text-teal_brand transition">Resources</a>
 
-                <div id="auth-status-badge" class="hidden text-xs bg-blue-900 border border-teal_brand/50 px-3 py-1.5 rounded-full text-teal_brand flex items-center gap-2">
+                <div id="auth-status-badge" class="hidden text-xs bg-blue-950 border border-teal_brand/40 px-3 py-1.5 rounded-full text-teal_brand flex items-center gap-2">
                     <span class="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                     <span id="active-user-display"></span>
                 </div>
@@ -43,31 +53,36 @@
         </div>
     </header>
 
-    <section class="bg-gradient-to-b from-ocean to-blue-950 text-white py-16 px-4 text-center">
+    <section class="bg-gradient-to-b from-ocean to-blue-950 text-white py-20 px-4 text-center">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl sm:text-5xl font-black mb-6 leading-tight">
+            <h1 class="text-4xl sm:text-6xl font-black mb-6 leading-tight">
                 Casual space. <span class="text-teal_brand">Comprehensive</span> learning.
             </h1>
             <p class="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                 Helping you understand technical subjects like math, programming, and data science without the intimidating academic jargon.
             </p>
-            <a href="#classroom" class="inline-block bg-teal_brand text-white text-lg font-bold px-8 py-4 rounded-xl hover:bg-teal-600 transition shadow-lg hover:-translate-y-0.5 transform">
-                Enter Live Virtual Classroom
-            </a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#classroom" class="inline-block bg-teal_brand text-white text-lg font-bold px-8 py-4 rounded-xl hover:bg-teal-600 transition shadow-lg hover:-translate-y-0.5 transform">
+                    Enter Virtual Classroom
+                </a>
+                <a href="#resources" class="inline-block bg-transparent border border-gray-400 text-white text-lg font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition">
+                    Download Study Guides
+                </a>
+            </div>
         </div>
     </section>
 
-    <section id="about" class="py-16 px-4 max-w-5xl mx-auto">
+    <section id="about" class="py-20 px-4 max-w-5xl mx-auto">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-ocean">The Marlin Way</h2>
+            <h2 class="text-3xl sm:text-4xl font-bold text-ocean">The Marlin Way</h2>
             <div class="h-1 w-20 bg-teal_brand mx-auto mt-4 rounded"></div>
         </div>
         <p class="text-lg text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
-            We believe that technical topics don't have to be cold and intimidating. At Marlin Tutors, we cultivate an online space that is casual but comprehensive. Whether you are writing your first line of code or modeling statistical trends, we ensure you gain a deep, intuitive understanding.
+            We believe that technical topics don't have to be cold and intimidating. At Marlin Tutors, we cultivate an online space that is casual but comprehensive. Whether you are writing your first line of code, tracing recursion frames, or modeling statistical trends, we ensure you gain a deep, intuitive understanding.
         </p>
     </section>
 
-    <section id="pillars" class="bg-sand py-16 px-4">
+    <section id="pillars" class="bg-sand py-20 px-4">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-ocean">Core Subjects</h2>
@@ -86,7 +101,7 @@
                     <div class="text-4xl mb-4">💻</div>
                     <h3 class="text-xl font-bold text-ocean mb-3">Programming</h3>
                     <p class="text-gray-600 leading-relaxed text-sm">
-                        Master syntax, structures, environments, and functional logic. Learn how to write elegant, repeatable programs from scratch.
+                        Master syntax, variables, comments, operators, loops, and functional logic. Learn how to write elegant, repeatable programs from scratch.
                     </p>
                 </div>
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
@@ -100,28 +115,72 @@
         </div>
     </section>
 
-    <section id="classroom" class="py-16 px-4 max-w-6xl mx-auto">
+    <section id="resources" class="py-20 px-4 max-w-6xl mx-auto">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-ocean">Live Virtual Classroom</h2>
-            <p class="text-gray-500 mt-2">Powered by free, secure, open-source video conferencing</p>
+            <h2 class="text-3xl font-bold text-ocean">Student Study Guides & Resources</h2>
+            <p class="text-gray-500 mt-2">Download print-ready learning material custom drafted for our courses.</p>
             <div class="h-1 w-20 bg-teal_brand mx-auto mt-4 rounded"></div>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-md max-w-4xl mx-auto">
-            <div class="flex flex-col sm:flex-row items-center gap-4 mb-6">
-                <div class="flex-1 w-full">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Classroom Session Name</label>
-                    <input type="text" id="room-name" value="Marlin-Tutors-General-Lounge"
-                           class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal_brand font-semibold text-ocean">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Programming</span>
+                        <span class="text-sm text-gray-400">10-Page PDF</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-ocean mb-2">Fundamental R Programming Manual</h3>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">
+                        A beginner-friendly tutorial tracing R Syntax, Data Types, Control Loops (while/for), Nested Functions, global variables, and the mechanics of recursion. Includes 5 hands-on classroom exercises with detailed solutions.
+                    </p>
                 </div>
-                <button onclick="handleClassroomEntry()" class="w-full sm:w-auto bg-teal_brand text-white font-bold px-8 py-3 rounded-xl hover:bg-teal-600 transition shadow mt-6">
-                    Connect Now
-                </button>
+                <a href="./r-language-tutorial.pdf" download class="block w-full text-center bg-ocean text-white font-bold py-3 rounded-xl hover:bg-opacity-95 transition shadow">
+                    📥 Download Study Guide
+                </a>
             </div>
 
-            <div id="classroom-placeholder" class="bg-gray-100 rounded-xl p-12 text-center text-gray-500 border-2 border-dashed border-gray-300">
-                <span class="text-4xl block mb-3">🎥</span>
-                <p class="font-medium">Ready to start? Click "Connect Now" to login and open your immersive classroom.</p>
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Orientation</span>
+                        <span class="text-sm text-gray-400">2-Page PDF</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-ocean mb-2">Welcome to Marlin Tutors Brochure</h3>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">
+                        An introductory overview highlighting the Marlin teaching philosophy, our three core academic pillars, and a clear step-by-step onboarding plan for newly registered students.
+                    </p>
+                </div>
+                <a href="./welcome-to-marlin-tutors.pdf" download class="block w-full text-center bg-teal_brand text-white font-bold py-3 rounded-xl hover:bg-teal-600 transition shadow">
+                    📥 Download Welcome Flyer
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="classroom" class="bg-sand py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-ocean">Live Virtual Classroom</h2>
+                <p class="text-gray-500 mt-2">Powered by free, secure, open-source video conferencing</p>
+                <div class="h-1 w-20 bg-teal_brand mx-auto mt-4 rounded"></div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-md max-w-4xl mx-auto">
+                <div class="flex flex-col sm:flex-row items-center gap-4 mb-6">
+                    <div class="flex-1 w-full">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Classroom Session Name</label>
+                        <input type="text" id="room-name" value="Marlin-Tutors-General-Lounge"
+                               class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal_brand font-semibold text-ocean">
+                    </div>
+                    <button onclick="handleClassroomEntry()" class="w-full sm:w-auto bg-teal_brand text-white font-bold px-8 py-3 rounded-xl hover:bg-teal-600 transition shadow mt-6">
+                        Connect Now
+                    </button>
+                </div>
+
+                <div id="classroom-placeholder" class="bg-gray-100 rounded-xl p-12 text-center text-gray-500 border-2 border-dashed border-gray-300">
+                    <span class="text-4xl block mb-3">🎥</span>
+                    <p class="font-medium">Ready to start? Click "Connect Now" to login and open your immersive classroom.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -340,6 +399,14 @@
                     document.msExitFullscreen();
                 }
             }
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((reg) => console.log('Service Worker Registered!', reg))
+                    .catch((err) => console.log('Service Worker registration failed:', err));
+            });
         }
 
         window.onload = checkSession;
